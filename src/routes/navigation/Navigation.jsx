@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import ThemeTogglerSwitch from "../../components/ThemeToggler/ThemeToggler";
 import { Button } from "@mui/material";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 
 import { Outlet } from "react-router-dom";
 import { Paper } from "@mui/material";
@@ -20,8 +20,18 @@ import {
   StyledInputBase,
   SearchIconWrapper,
 } from "./Navigation.styles.js";
+import { textAlign } from "@mui/system";
 
-const pages = ["Home", "About"];
+const pages = [
+  {
+    href: "/",
+    display: "Home",
+  },
+  {
+    href: "/about",
+    display: "About",
+  },
+];
 
 const Navigation = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -58,11 +68,12 @@ const Navigation = () => {
     >
       {pages.map((page) => (
         <MenuItem
-          containerElement={<Link to="/page" />}
-          key={page}
+          component={Link}
+          to={page.href}
+          key={page.display}
           onClick={handleMobileMenuClose}
         >
-          <Typography textAlign="center">{page}</Typography>
+          <Typography textAlign="center">{page.display}</Typography>
         </MenuItem>
       ))}
     </Menu>
@@ -100,11 +111,19 @@ const Navigation = () => {
             >
               {pages.map((page) => (
                 <Button
-                  key={page}
+                  variant="nav"
+                  component={Link}
+                  to={page.href}
+                  key={page.display}
                   onClick={handleMobileMenuClose}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textAlign: "center",
+                  }}
                 >
-                  {page}
+                  {page.display}
                 </Button>
               ))}
             </Box>

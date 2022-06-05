@@ -65,23 +65,23 @@ export const getThemedComponents = (mode) => ({
   components: {
     ...(mode === "light"
       ? {
-          MuiLink: {
-            variant: "h3",
-          },
           MuiButton: {
             styleOverrides: {
               root: {
-                borderRadius: 0,
                 color: common.white,
+                background: palette.light.secondary.main,
                 fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
-                fontSize: 20,
-                borderWidth: 2,
-                "&:hover": {
-                  borderWidth: 2,
-                },
               },
             },
             variants: [
+              {
+                props: { variant: "nav" },
+                style: {
+                  color: common.white,
+                  background: "transparent",
+                  fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
+                },
+              },
               {
                 props: { variant: "contained" },
                 style: {
@@ -97,7 +97,7 @@ export const getThemedComponents = (mode) => ({
               {
                 props: { variant: "primary", color: "primary" },
                 style: {
-                  border: "4px dashed blue",
+                  // border: "4px dashed blue",
                 },
               },
             ],
