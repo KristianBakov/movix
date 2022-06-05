@@ -1,12 +1,7 @@
-import React, { useContext } from "react";
-import { Box } from "@mui/material";
-import { useTheme, styled } from "@mui/material/styles";
-import { ColorModeContext } from "../../contexts/color-context";
+import { styled } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -52,42 +47,3 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     borderRadius: 20 / 2,
   },
 }));
-
-export default function SubHeaderNavigation() {
-  const theme = useTheme();
-  const colorMode = useContext(ColorModeContext);
-
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "flex-end",
-        bgcolor: "background.default",
-        color: "text.primary",
-      }}
-    >
-      <FormGroup>
-        <FormControlLabel
-          labelPlacement="start"
-          label={`${theme.palette.mode} mode`}
-          control={
-            <MaterialUISwitch
-              onChange={colorMode.toggleColorMode}
-              checked={theme.palette.mode === "dark" ? true : false}
-              sx={{ m: 1 }}
-              className="bar"
-            />
-          }
-          sx={{
-            mr: 3,
-            ".MuiFormControlLabel-label": {
-              fontSize: 12,
-            },
-          }}
-        />
-      </FormGroup>
-    </Box>
-  );
-}

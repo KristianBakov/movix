@@ -14,7 +14,7 @@ import {
 import { deepmerge } from "@mui/utils";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { getDesignTokens, getThemedComponents } from "./theme/Theme";
-import { ColorModeContext } from "./contexts/color-context";
+import { ColorModeContext } from "./contexts/ColorModeContext";
 
 const App = () => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");

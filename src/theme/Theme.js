@@ -1,4 +1,4 @@
-import { amber, deepOrange, grey, blue, common } from "@mui/material/colors";
+import { grey, common } from "@mui/material/colors";
 
 const palette = {
   light: {
@@ -105,15 +105,6 @@ export const getThemedComponents = (mode) => ({
           MuiList: {
             styleOverrides: {
               root: {},
-            },
-          },
-          MuiMenuItem: {
-            styleOverrides: {
-              root: {
-                color: common.white,
-                alignItems: "stretch",
-                fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
-              },
             },
           },
           MuiAccordion: {
