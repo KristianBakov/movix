@@ -9,9 +9,10 @@ const palette = {
     },
     secondary: {
       main: "#ffc108",
+      dark: "#ff8f00",
     },
     background: {
-      main: "#fefefe",
+      main: "#FEFEFE",
     },
   },
 
@@ -19,10 +20,11 @@ const palette = {
     primary: {
       main: "#4608FF",
       light: "#08c1FF",
-      dark: "##0000f0",
+      dark: "#0000f0",
     },
     secondary: {
       main: "#ffc108",
+      dark: "#ff8f00",
     },
     background: {
       main: "#201C17",
@@ -36,6 +38,10 @@ export const getDesignTokens = (mode) => ({
     ...(mode === "light"
       ? {
           divider: grey,
+          background: {
+            default: palette.light.background.main,
+            paper: palette.light.background.main,
+          },
           text: {
             primary: grey[900],
             secondary: grey[800],
@@ -69,7 +75,8 @@ export const getThemedComponents = (mode) => ({
             styleOverrides: {
               root: {
                 color: common.white,
-                background: palette.light.secondary.main,
+                paddingLeft: 20,
+                paddingRight: 20,
                 fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
               },
             },
@@ -83,9 +90,20 @@ export const getThemedComponents = (mode) => ({
                 },
               },
               {
-                props: { variant: "contained" },
+                props: { variant: "media" },
                 style: {
+                  color: grey[800],
+                  paddingLeft: 20,
+                  paddingRight: 20,
+                  background: palette.light.secondary.main,
                   fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
+                  "&:hover": {
+                    backgroundColor: palette.light.secondary.dark,
+                    // Reset on touch devices, it doesn't add specificity
+                    "@media (hover: none)": {
+                      backgroundColor: palette.light.secondary.dark,
+                    },
+                  },
                 },
               },
               {
@@ -107,6 +125,16 @@ export const getThemedComponents = (mode) => ({
               root: {},
             },
           },
+          MuiCenteredBox: {
+            styleOverrides: {
+              root: {
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              },
+            },
+          },
           MuiAccordion: {
             styleOverrides: {
               root: {
@@ -117,6 +145,43 @@ export const getThemedComponents = (mode) => ({
           },
         }
       : {
+          MuiButton: {
+            styleOverrides: {
+              root: {
+                color: grey[800],
+                paddingLeft: 20,
+                paddingRight: 20,
+                fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
+              },
+            },
+            variants: [
+              {
+                props: { variant: "nav" },
+                style: {
+                  color: common.white,
+                  background: "transparent",
+                  fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
+                },
+              },
+              {
+                props: { variant: "media" },
+                style: {
+                  color: grey[800],
+                  paddingLeft: 20,
+                  paddingRight: 20,
+                  background: palette.light.secondary.main,
+                  fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
+                  "&:hover": {
+                    backgroundColor: palette.light.secondary.dark,
+                    // Reset on touch devices, it doesn't add specificity
+                    "@media (hover: none)": {
+                      backgroundColor: palette.light.secondary.dark,
+                    },
+                  },
+                },
+              },
+            ],
+          },
           MuiAppBar: {
             styleOverrides: {
               colorPrimary: {

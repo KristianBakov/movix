@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import ThemeTogglerSwitch from "../../components/ThemeToggler/ThemeToggler";
+import ThemeTogglerSwitch from "../../components/theme-toggler/ThemeToggler";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -20,7 +20,6 @@ import {
   StyledInputBase,
   SearchIconWrapper,
 } from "./Navigation.styles.js";
-import { textAlign } from "@mui/system";
 
 const pages = [
   {
