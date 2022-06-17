@@ -8,6 +8,7 @@ const palette = {
       dark: "#4608FF",
     },
     secondary: {
+      light: "#FFEEBA",
       main: "#ffc108",
       dark: "#ff8f00",
     },
@@ -23,6 +24,7 @@ const palette = {
       dark: "#0000f0",
     },
     secondary: {
+      light: "#FFEEBA",
       main: "#ffc108",
       dark: "#ff8f00",
     },
@@ -61,9 +63,6 @@ export const getDesignTokens = (mode) => ({
   },
   typography: {
     fontFamily: ["Roboto", '"Helvetica Neue"', "Arial", "sans-serif"].join(","),
-    body1: {
-      fontFamily: "Poppins, Arial, sans-serif",
-    },
   },
 });
 
@@ -106,42 +105,30 @@ export const getThemedComponents = (mode) => ({
                   },
                 },
               },
-              {
-                props: { variant: "outlined" },
-                style: {
-                  color: palette.light.primary.main,
-                },
+            ],
+          },
+          MuiChip: {
+            styleOverrides: {
+              root: {
+                backgroundColor: palette.light.primary.main,
+                marginRight: 10,
               },
+            },
+            variants: [
               {
-                props: { variant: "primary", color: "primary" },
+                props: { variant: "trailer" },
                 style: {
-                  // border: "4px dashed blue",
+                  backgroundColor: palette.light.primary.dark,
+                  marginRight: 10,
+
+                  "&:hover": {
+                    backgroundColor: palette.light.primary.dark,
+                    opacity: 0.8,
+                    cursor: "pointer",
+                  },
                 },
               },
             ],
-          },
-          MuiList: {
-            styleOverrides: {
-              root: {},
-            },
-          },
-          MuiCenteredBox: {
-            styleOverrides: {
-              root: {
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              },
-            },
-          },
-          MuiAccordion: {
-            styleOverrides: {
-              root: {
-                color: common.white,
-                fontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
-              },
-            },
           },
         }
       : {
@@ -190,5 +177,58 @@ export const getThemedComponents = (mode) => ({
             },
           },
         }),
+
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          "&.MuiMovieSliderCard": {
+            margin: "0 auto",
+            padding: "40px",
+            background: "transparent",
+            boxShadow: "none",
+
+            "& .MuiCardMedia-root": {
+              display: "block",
+              width: "100%",
+              height: "100%",
+              //margin: "0 5%",
+              "&:hover": {
+                opacity: 0.8,
+                cursor: "pointer",
+              },
+            },
+
+            "& .MuiCardContent-root": {
+              textAlign: "left",
+              padding: 0,
+              paddingTop: "16px",
+            },
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          backgroundColor: palette.dark.primary.main,
+          marginRight: 10,
+        },
+      },
+      variants: [
+        {
+          props: { variant: "trailer" },
+          style: {
+            backgroundColor: palette.dark.primary.dark,
+            marginRight: 10,
+
+            "&:hover": {
+              backgroundColor: palette.dark.primary.dark,
+              opacity: 0.8,
+              cursor: "pointer",
+            },
+          },
+        },
+      ],
+    },
   },
 });

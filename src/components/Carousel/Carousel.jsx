@@ -5,7 +5,8 @@ import { useTheme } from "@mui/material";
 
 import { CircularProgress } from "@mui/material";
 
-import { CenteredBox, CarouselWrapper } from "./Carousel.styles";
+import { CenteredBox } from "../../commons/styles/general.styles";
+import { Showcase } from "../../commons/styles/general.styles";
 
 const CarouselComponent = ({ data, isLoading, isSuccess, isError, error }) => {
   const theme = useTheme();
@@ -19,10 +20,6 @@ const CarouselComponent = ({ data, isLoading, isSuccess, isError, error }) => {
       </CenteredBox>
     );
   } else if (isSuccess) {
-    // movieList.results.map((item, index) => {
-    //   console.log(item);
-    // });
-
     content = (
       <Carousel
         height={`calc(100vh - ${theme.spacing(7)})`}
@@ -39,7 +36,7 @@ const CarouselComponent = ({ data, isLoading, isSuccess, isError, error }) => {
     content = <CenteredBox>{error.toString()}</CenteredBox>;
   }
 
-  return <CarouselWrapper>{content}</CarouselWrapper>;
+  return <Showcase>{content}</Showcase>;
 };
 
 export default CarouselComponent;

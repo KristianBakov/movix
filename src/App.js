@@ -3,9 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./routes/home/Home.jsx";
 import Navigation from "./routes/navigation/Navigation.jsx";
-import About from "./routes/about/About";
-
-import "./App.scss";
+import About from "./routes/about/About.jsx";
+import Details from "./routes/details/Details.jsx";
 
 import {
   ThemeProvider,
@@ -47,8 +46,9 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<Navigation />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route exact index element={<Home />} />
+            <Route exact path="/about" element={<About />} />
+            <Route exact path="/details/:type/:id" element={<Details />} />
           </Route>
         </Routes>
       </ThemeProvider>

@@ -83,14 +83,19 @@ const Navigation = () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="fixed">
           <Toolbar>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
-            >
-              Movix
-            </Typography>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                  color: "white",
+                }}
+              >
+                Movix
+              </Typography>
+            </Link>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />

@@ -1,50 +1,134 @@
-import { Grid, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
+import { GradientBox } from "../../commons/styles/general.styles";
 import CarouselComponent from "../../components/carousel/Carousel";
-import MovieSlider from "../../components/movie-slider/MovieSlider";
+import MovieSliderShowcase from "../../components/movie-slider/MovieSliderShowcase";
 
-import { useGetDiscoverQuery } from "../../features/api/apiSlice";
+import {
+  useGetDiscoverQuery,
+  useGetTrendingTodayQuery,
+  useGetTopRatedQuery,
+  useGetUpcomingQuery,
+  useGetStudioGhibliQuery,
+  useGetAsianDramasQuery,
+  useGetPopularTvSeriesQuery,
+} from "../../features/api/apiSlice";
 
 const Home = () => {
-  const theme = useTheme();
-
   const {
-    data: discoverMoviesList,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
+    data: discoverMoviesList = [],
+    isSuccess: getDiscoverSuccess,
+    isError: isGetDiscoverError,
   } = useGetDiscoverQuery();
+  const {
+    data: trendingMoviesList = [],
+
+    isSuccess: getTrendingTodaySuccess,
+    isError: isGetTrendingTodayError,
+  } = useGetTrendingTodayQuery();
+  const {
+    data: topRatedMoviesList = [],
+
+    isSuccess: getTopRatedSuccess,
+    isError: isGetTopRatedError,
+  } = useGetTopRatedQuery();
+  const {
+    data: upcomingMoviesList = [],
+
+    isSuccess: getUpcomingSuccess,
+    isError: isGetUpcomingError,
+  } = useGetUpcomingQuery();
+  const {
+    data: studioGhibliMoviesList = [],
+
+    isSuccess: getStudioGhibliSuccess,
+    isError: isGetStudioGhibliError,
+  } = useGetStudioGhibliQuery();
+  const {
+    data: asianDramasMoviesList = [],
+
+    isSuccess: getAsianDramasSuccess,
+    isError: isGetAsianDramasError,
+  } = useGetAsianDramasQuery();
+  const {
+    data: popularTvSeriesMoviesList = [],
+
+    isSuccess: getPopularTvSeriesSuccess,
+    isError: isGetPopularTvSeriesError,
+  } = useGetPopularTvSeriesQuery();
 
   return (
     <Paper>
       <Outlet />
       <CarouselComponent
         data={discoverMoviesList}
-        isLoading={isLoading}
-        isSuccess={isSuccess}
-        isError={isError}
-        error={error}
+        isSuccess={getDiscoverSuccess}
+        isError={isGetDiscoverError}
       />
-      <Grid
-        container
-        direction="column"
-        style={{
-          background:
-            theme.palette.mode === "light" ? lightGradient : darkGradient,
-        }}
-      >
-        <MovieSlider />
-      </Grid>
+      <GradientBox>
+        <MovieSliderShowcase
+          title={"Now In Theatres"}
+          type={MEDIA_TYPES.MOVIE}
+          data={discoverMoviesList}
+          isSuccess={getDiscoverSuccess}
+          isError={isGetDiscoverError}
+        />
+
+        <MovieSliderShowcase
+          title={"Trending Today"}
+          type={MEDIA_TYPES.MOVIE}
+          data={trendingMoviesList}
+          isSuccess={getTrendingTodaySuccess}
+          isError={isGetTrendingTodayError}
+        />
+
+        <MovieSliderShowcase
+          title={"Top Rated Movies"}
+          type={MEDIA_TYPES.MOVIE}
+          data={topRatedMoviesList}
+          isSuccess={getTopRatedSuccess}
+          isError={isGetTopRatedError}
+        />
+
+        <MovieSliderShowcase
+          title={"Upcoming Movies"}
+          type={MEDIA_TYPES.MOVIE}
+          data={upcomingMoviesList}
+          isSuccess={getUpcomingSuccess}
+          isError={isGetUpcomingError}
+        />
+
+        <MovieSliderShowcase
+          title={"Studio Ghibli Collection"}
+          type={MEDIA_TYPES.MOVIE}
+          data={studioGhibliMoviesList}
+          isSuccess={getStudioGhibliSuccess}
+          isError={isGetStudioGhibliError}
+        />
+
+        <MovieSliderShowcase
+          title={"Asian Dramas"}
+          type={MEDIA_TYPES.TV}
+          data={asianDramasMoviesList}
+          isSuccess={getAsianDramasSuccess}
+          isError={isGetAsianDramasError}
+        />
+
+        <MovieSliderShowcase
+          title={"Popular TV Series"}
+          type={MEDIA_TYPES.TV}
+          data={popularTvSeriesMoviesList}
+          isSuccess={getPopularTvSeriesSuccess}
+          isError={isGetPopularTvSeriesError}
+        />
+      </GradientBox>
     </Paper>
   );
 };
 
-const lightGradient =
-  "linear-gradient(180deg,hsl(0deg, 0%, 100%) 0%,hsl(176deg, 57%, 97%) 18%,hsl(176deg, 61%, 93%) 35%,hsl(176deg, 62%, 90%) 49%,hsl(177deg, 62%, 87%) 61%,hsl(177deg, 63%, 84%) 72%,hsl(177deg, 63%, 80%) 80%,hsl(177deg, 64%, 77%) 87%,hsl(178deg, 64%, 73%) 92%,hsl(178deg, 65%, 69%) 95%,hsl(178deg, 66%, 65%) 98%,hsl(178deg, 67%, 60%) 100%)";
-
-const darkGradient =
-  "linear-gradient(90deg,hsl(221deg, 55%, 10%) 0%,hsl(234deg, 38%, 15%) 18%,hsl(254deg, 34%, 18%) 35%,hsl(273deg, 35%, 20%) 49%,hsl(292deg, 36%, 22%) 61%,hsl(311deg, 40%, 25%) 72%,hsl(323deg, 46%, 28%) 80%,hsl(331deg, 51%, 32%) 87%,hsl(339deg, 53%, 36%) 92%,hsl(347deg, 53%, 40%) 95%,hsl(355deg, 51%, 44%) 98%,hsl(4deg, 52%, 46%) 100%)";
+export const MEDIA_TYPES = {
+  MOVIE: "movie",
+  TV: "tv",
+};
 
 export default Home;
