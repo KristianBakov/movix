@@ -46,6 +46,10 @@ export const apiSlice = createApi({
       query: ({ type, id }) =>
         `/${type}/${id}/similar?api_key=${apiKey}&language=en-US&page=1`,
     }),
+    getSearch: builder.query({
+      query: ({ query }) =>
+        `/search/multi?api_key=${apiKey}&language=en-US&query=${query}&page=1&include_adult=false`,
+    }),
   }),
 });
 
@@ -61,4 +65,5 @@ export const {
   useGetCastListQuery,
   useGetTrailerQuery,
   useGetSimilarQuery,
+  useGetSearchQuery,
 } = apiSlice;

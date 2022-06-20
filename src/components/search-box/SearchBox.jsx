@@ -1,3 +1,6 @@
+import { useState, memo } from "react";
+import { useNavigate } from "react-router-dom";
+import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 import {
@@ -7,18 +10,38 @@ import {
 } from "./SearchBox.styles.js";
 
 const SearchBox = () => {
+  const navigate = useNavigate();
+  const [searchField, SetSearchField] = useState("");
+
+  const onSearchFieldChange = (e) => {
+    SetSearchField(e.target.value);
+  };
+
+  const onSearchFieldSubmit = (e) => {
+    e.preventDefault();
+
+    SetSearchField("");
+    navigate(`/search/${searchField}`);
+  };
+  console.log(searchField);
   return (
     <SearchBoxWrapper>
       <SearchIconWrapper>
-        <SearchIcon />
+        <IconButton onClick={onSearchFieldSubmit} sx={{ zIndex: 10 }}>
+          <SearchIcon />
+        </IconButton>
       </SearchIconWrapper>
 
-      <StyledInputBase
-        placeholder="Search…"
-        inputProps={{ "aria-label": "search" }}
-      />
+      <form onSubmit={onSearchFieldSubmit}>
+        <StyledInputBase
+          placeholder="Search…"
+          onChange={onSearchFieldChange}
+          value={searchField}
+          inputProps={{ "aria-label": "search" }}
+        />
+      </form>
     </SearchBoxWrapper>
   );
 };
 
-export default SearchBox;
+export default memo(SearchBox);

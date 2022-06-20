@@ -1,5 +1,4 @@
 import React from "react";
-import { memo } from "react";
 import { Link } from "react-router-dom";
 
 import { Typography, Menu, MenuItem } from "@mui/material";
@@ -43,4 +42,4 @@ const MobileMenu = ({
   );
 };
 
-export default memo(MobileMenu);
+export default MobileMenu;
