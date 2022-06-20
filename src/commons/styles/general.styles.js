@@ -1,5 +1,9 @@
 import { Box, styled } from "@mui/material";
 
+export const FlexBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+}));
+
 export const CenteredBox = styled(Box)(({ theme }) => ({
   height: "100%",
   display: "flex",

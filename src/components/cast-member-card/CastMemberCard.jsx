@@ -5,7 +5,7 @@ const CastMemberCard = ({ imgUrl, realName, characterName }) => {
   return (
     <Card
       sx={{
-        width: 120,
+        width: 140,
         mx: 3,
         background: "transparent",
         boxShadow: "none",
