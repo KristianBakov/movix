@@ -4,6 +4,10 @@ export const FlexBox = styled(Box)(({ theme }) => ({
   display: "flex",
 }));
 
+export const GrowBox = styled(Box)(({ theme }) => ({
+  flexGrow: 1,
+}));
+
 export const CenteredBox = styled(Box)(({ theme }) => ({
   height: "100%",
   display: "flex",

@@ -77,7 +77,8 @@ const MovieSliderShowcase = ({ title, type, data, isSuccess, isError }) => {
         width: "100%",
         paddingLeft: 50,
         paddingRight: 50,
-        minHeight: 800,
+        marginTop: 20,
+        minHeight: 400,
       }}
     >
       <CenteredBox>
