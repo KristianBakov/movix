@@ -16,6 +16,12 @@ export const CenteredRowBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
 }));
 
+export const CenteredColumnBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+}));
+
 export const Showcase = styled(Box)(({ theme }) => ({
   height: `calc(100vh - ${theme.spacing(7)})`,
 }));
@@ -44,6 +50,12 @@ export const ShowcaseBox = styled(Box)(({ theme, img, dark }) => ({
 
 export const GradientBox = styled(Box)(({ theme }) => ({
   background: theme.palette.mode === "light" ? lightGradient : darkGradient,
+}));
+export const CenteredGradientBox = styled(GradientBox)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 const lightGradient =

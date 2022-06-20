@@ -1,12 +1,11 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { CastCardWrapper } from "./CastDisplay.styles";
 import CastMemberCard from "../cast-member-card/CastMemberCard";
+import { CenteredColumnBox } from "../../commons/styles/general.styles";
 
 const CastDisplay = ({ cast }) => {
   return (
-    <Box
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <CenteredColumnBox>
       <Typography variant="h3">Top Cast Members</Typography>
 
       <CastCardWrapper sx={{ pt: 4 }}>
@@ -21,7 +20,7 @@ const CastDisplay = ({ cast }) => {
           );
         })}
       </CastCardWrapper>
-    </Box>
+    </CenteredColumnBox>
   );
 };
 
