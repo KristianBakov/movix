@@ -23,7 +23,7 @@ const SearchBox = () => {
     SetSearchField("");
     navigate(`/search/${searchField}`);
   };
-  console.log(searchField);
+
   return (
     <SearchBoxWrapper>
       <SearchIconWrapper>

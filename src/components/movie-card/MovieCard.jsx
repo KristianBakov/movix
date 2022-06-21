@@ -9,7 +9,6 @@ import {
 import noImage from "../../assets/noImage.png";
 
 const MovieCard = ({ imgUrl, title, rating, type, id }) => {
-  console.log(type);
   return (
     <Card
       sx={{

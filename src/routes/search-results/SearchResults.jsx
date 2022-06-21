@@ -9,7 +9,6 @@ const SearchResults = () => {
   const { query } = useParams();
 
   const { data: searchResult, isSuccess } = useGetSearchQuery({ query });
-  console.log(searchResult);
 
   let content;
   if (isSuccess) {
