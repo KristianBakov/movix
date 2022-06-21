@@ -15,6 +15,7 @@ import Navigation from "./routes/navigation/Navigation.jsx";
 import About from "./routes/about/About.jsx";
 import Details from "./routes/details/Details.jsx";
 import SearchResults from "./routes/search-results/SearchResults.jsx";
+import Fallback from "./routes/fallback/Fallback";
 
 const App = () => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -50,6 +51,7 @@ const App = () => {
             <Route exact path="/about" element={<About />} />
             <Route exact path="/details/:type/:id" element={<Details />} />
             <Route exact path="/search/:query" element={<SearchResults />} />
+            <Route path="*" element={<Fallback />} />
           </Route>
         </Routes>
       </ThemeProvider>

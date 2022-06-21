@@ -1,5 +1,5 @@
-import noImage from "../../assets/noImage.png";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import noImage from "../../assets/noImage.png";
 
 const CastMemberCard = ({ imgUrl, realName, characterName }) => {
   return (

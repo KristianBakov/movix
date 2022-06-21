@@ -38,9 +38,8 @@ export const ShowcaseBox = styled(Box)(({ theme, img, dark }) => ({
   padding: 0,
   overflow: "hidden",
   height: `calc(100vh - ${theme.spacing(7)})`,
-  backgroundImage: dark
-    ? `linear-gradient(rgba(0,0,150,0.4),rgba(0,0,150,0.4)),url("https://image.tmdb.org/t/p/original${img}")`
-    : `url("https://image.tmdb.org/t/p/original${img}")`,
+
+  backgroundImage: getImage(img, dark),
 
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
@@ -51,6 +50,14 @@ export const ShowcaseBox = styled(Box)(({ theme, img, dark }) => ({
     color: "white",
   },
 }));
+
+const getImage = (img, dark) => {
+  return img
+    ? dark
+      ? `linear-gradient(rgba(0,0,150,0.4),rgba(0,0,150,0.4)),url("https://image.tmdb.org/t/p/original${img}")`
+      : `url("https://image.tmdb.org/t/p/original${img}")`
+    : "none";
+};
 
 export const GradientBox = styled(Box)(({ theme }) => ({
   background: theme.palette.mode === "light" ? lightGradient : darkGradient,

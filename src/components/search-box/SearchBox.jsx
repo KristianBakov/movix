@@ -37,7 +37,7 @@ const SearchBox = () => {
           placeholder="Search…"
           onChange={onSearchFieldChange}
           value={searchField}
-          inputProps={{ "aria-label": "search" }}
+          inputProps={{ "aria-label": "search", maxLength: 50 }}
         />
       </form>
     </SearchBoxWrapper>

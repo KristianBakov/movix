@@ -29,27 +29,32 @@ const MovieShowcase = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  let hasTrailer = false;
+  if (typeof trailer.results[0] !== "undefined") {
+    hasTrailer = true;
+  }
+
   return (
     <ShowcaseBoxWrapper dark img={backdrop}>
       <CenteredColumnWrapper>
-        <CenteredContainer>
+        <CenteredContainer sx={{ flexDirection: { xs: "column", md: "row" } }}>
           <ShowcasePosterCard poster={poster} title={title} />
 
           <TitleBox>
             <Typography variant="h3">
               {title}
-              <DateSpan>{" (" + releaseDate.substr(0, 4) + ")"}</DateSpan>
+              <DateSpan>{" (" + releaseDate?.substr(0, 4) + ")"}</DateSpan>
             </Typography>
 
             <FlexBox sx={{ mt: 2 }}>
               <GenresDisplay genres={genres} />
-              <TrailerChip trailer={trailer} handleOpen={handleOpen} />
+              <TrailerChip trailer={hasTrailer} handleOpen={handleOpen} />
             </FlexBox>
 
             <VideoModal
               open={open}
               handleClose={handleClose}
-              videoId={trailer.results[0].key}
+              videoId={hasTrailer ? trailer.results[0].key : ""}
             />
 
             <Divider sx={{ width: 200, my: 2 }} />

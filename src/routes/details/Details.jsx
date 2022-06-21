@@ -42,9 +42,13 @@ const Details = () => {
         <MovieShowcase
           backdrop={movieDetails.backdrop_path}
           poster={movieDetails.poster_path}
-          title={movieDetails.title}
+          title={movieDetails.title ? movieDetails.title : movieDetails.name}
           genres={movieDetails.genres}
-          releaseDate={movieDetails.release_date}
+          releaseDate={
+            movieDetails.release_date
+              ? movieDetails.release_date
+              : movieDetails.first_air_date
+          }
           overview={movieDetails.overview}
           trailer={trailer}
         />
@@ -52,15 +56,13 @@ const Details = () => {
         <CenteredColumnGradientWrapper sx={{ pt: 2 }}>
           <CastDisplay cast={castDetails.cast} />
 
-          {similarList ? (
-            <MovieSliderShowcase
-              title={"Recommended for you"}
-              type={type}
-              data={similarList}
-              isSuccess={similarListSuccess}
-              isError={similarListError}
-            />
-          ) : null}
+          <MovieSliderShowcase
+            title={"Recommended for you"}
+            type={type}
+            data={similarList}
+            isSuccess={similarListSuccess}
+            isError={similarListError}
+          />
         </CenteredColumnGradientWrapper>
       </Paper>
     );

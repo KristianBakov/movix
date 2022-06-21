@@ -4,6 +4,7 @@ import { PlayCircle } from "@mui/icons-material";
 const TrailerChip = ({ trailer, handleOpen }) => {
   return (
     <Chip
+      disabled={!trailer}
       label="Trailer"
       icon={<PlayCircle />}
       variant="trailer"

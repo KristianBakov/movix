@@ -4,7 +4,7 @@ import CastMemberCard from "../cast-member-card/CastMemberCard";
 import { CenteredColumnBox } from "../../commons/styles/general.styles";
 
 const CastDisplay = ({ cast }) => {
-  return (
+  return cast.length > 0 ? (
     <CenteredColumnBox>
       <Typography variant="h3">Top Cast Members</Typography>
 
@@ -21,7 +21,7 @@ const CastDisplay = ({ cast }) => {
         })}
       </CastCardWrapper>
     </CenteredColumnBox>
-  );
+  ) : null;
 };
 
 export default CastDisplay;

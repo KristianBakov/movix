@@ -9,7 +9,7 @@ const ShowcasePosterCard = ({ poster, title }) => {
         image={
           poster ? `https://image.tmdb.org/t/p/original${poster}` : noImage
         }
-        alt={title}
+        alt={title ? title : null}
       />
     </Card>
   );
